@@ -1,0 +1,76 @@
+.hero {
+    padding: 1.25rem var(--padding);
+}
+
+.card {
+    background-color: var(--light-blue);
+    margin: 2rem 0 3rem;
+}
+
+.card__text {
+    padding: 1rem;
+    padding-top: .75rem;
+}
+
+.card__text p,
+.card__text small {
+    color: var(--text-gray);
+}
+
+.card__text p {
+    margin: .75rem 0 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.card__btn {
+    background-color: white;
+    padding: 5px 10px;
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: .9rem;
+    border: 2px solid white;
+    transition: background-color 200ms ease,
+        border-color 200ms ease;
+    display: inline-block;
+}
+
+.card__btn:hover {
+    border-color: black;
+    background-color: transparent;
+}
+
+.body {
+    background-color: white;
+    padding: 2rem var(--padding);
+}
+
+.body h2 {
+    font-size: 1.35rem;
+}
+
+.form {
+    position: relative;
+    color: var(--gray);
+    width: fit-content;
+    margin: 1rem auto 0;
+}
+
+.form svg {
+    position: absolute;
+    width: 20px;
+    color: var(--gray);
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.form input {
+    width: 100%;
+    max-width: 200px;
+    padding: .5rem 0 .5rem 2rem;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px #0003;
+}

@@ -1,13 +1,55 @@
-body {
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --padding: 1.5rem;
+  --light-blue: #D4E8FF;
+  --text-gray: #424242;
+  --gray: #B6B6B6;
+  --red: #ff4747;
+  --orange: #FFAC33;
+}
+
+.heading {
+  font-family: 'Trocchi', serif;
+}
+
+.heading span {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+body {
+  background-image: linear-gradient(hsla(227, 100%, 90%, 0.3), hsla(227, 100%, 90%, 0.3)), url('./dot-grid.png');
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.wrapper {
+  padding: 1.25rem var(--padding);
+}
+
+.title {
+  margin-top: 1rem;
+  font-weight: 400;
 }

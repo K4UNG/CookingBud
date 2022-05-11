@@ -1,0 +1,27 @@
+.logo {
+    width: 100px;
+}
+
+.nav__form {
+    display: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    --small: .85rem;
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: var(--small);
+}
+
+.links {
+    text-decoration: none;
+    color: black;
+}

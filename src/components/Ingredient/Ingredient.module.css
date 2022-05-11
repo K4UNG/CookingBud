@@ -1,0 +1,39 @@
+.card {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.card img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.card strong {
+    font-size: .8rem;
+}
+
+.close {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: 0;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.close svg {
+    color: var(--red);
+    opacity: .7;
+    transition: opacity 100ms ease;
+}
+
+.close:hover svg {
+    opacity: 1;
+}

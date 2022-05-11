@@ -1,0 +1,44 @@
+.recipe {
+    padding: 1.25rem var(--padding);
+}
+
+.detail {
+    padding: 2rem 0;
+}
+
+.detail h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail h2 {
+    margin: 1.5rem 0 1rem;
+}
+
+.detail ul {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
+.detail a {
+    color: var(--text-gray);
+}
+
+.detail p {
+    background-color: white;
+    padding: .5rem;
+}
+
+.instructions ul,
+.instructions ol {
+    list-style: none;
+}
+
+.detail b {
+    font-weight: 600;
+}
+
+.error {
+    text-align: center;
+}
