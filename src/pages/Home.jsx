@@ -15,7 +15,7 @@ export default function Home() {
   );
   useEffect(() => {
     const ls = localStorage.getItem('popular');
-    if (!ls) {
+    if (!ls || ls === 'undefined') {
       getPopular().then(data => {
         setPopular(data.recipes)
         localStorage.setItem('popular', JSON.stringify(data.recipes))
