@@ -15,14 +15,13 @@ export default function Home() {
   );
   useEffect(() => {
     const ls = localStorage.getItem('popular');
-    if (ls.length) {
-      (async () => {
-        const data = await getPopular();
-        setPopular(data.recipes);
-        localStorage.setItem('popular', data.recipe)
-      })();
+    if (!ls) {
+      getPopular().then(data => {
+        setPopular(data.recipes)
+        localStorage.setItem('popular', JSON.stringify(data.recipes))
+      })
     } else {
-      setPopular(JSON.parse(ls));
+      setPopular(JSON.parse(ls))
     }
   }, [getPopular]);
 
