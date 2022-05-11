@@ -81,7 +81,7 @@ export default function Home() {
         {popularLoading ? (
           <p>Loading</p>
         ) : popularError ? <p>{popularError}</p> : (
-          popular.map((item) => {
+          popular?.map((item) => {
             return <Popular key={item.id} recipe={item} time={true} />;
           })
         )}
