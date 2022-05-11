@@ -23,10 +23,11 @@ export default function Result() {
             const data = await getRecipes()
             setResults(data.results)
         })()
-    }, [])
+    }, [getRecipes])
 
     return <div className="wrapper">
         <Nav />
-        <Results data={results} />
+        <h2 className="heading" style={{marginTop: '1rem'}}>Results</h2>
+        <Results loading={loading} error={error} data={results} />
     </div>
 }

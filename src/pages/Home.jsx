@@ -2,7 +2,6 @@ import Nav from "../components/Nav/Nav";
 import styles from "./Home.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../hooks/use-fetch";
-import useLocatStorage from "../hooks/use-localstroage";
 import { useState, useEffect } from "react";
 import Popular from "../components/Popular/Popular";
 import Cuisine from "../components/Cuisine/Cuisine";
@@ -14,19 +13,18 @@ export default function Home() {
   const [getPopular, popularLoading, popularError] = useFetch(
     `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=5`
   );
-  const [popularLS, setPopularLS] = useLocatStorage("popular", []);
   useEffect(() => {
-    const ls = popularLS();
-    if (ls.length === 0) {
+    const ls = localStorage.getItem('popular');
+    if (ls.length) {
       (async () => {
         const data = await getPopular();
         setPopular(data.recipes);
-        setPopularLS(data.recipes);
+        localStorage.setItem('popular', data.recipe)
       })();
     } else {
       setPopular(JSON.parse(ls));
     }
-  }, []);
+  }, [getPopular]);
 
   const [query, setQuery] = useState("");
 
@@ -80,9 +78,9 @@ export default function Home() {
         <h2 className="heading">Popular picks for you</h2>
         {popularLoading ? (
           <p>Loading</p>
-        ) : (
+        ) : popularError ? <p>{popularError}</p> : (
           popular.map((item) => {
-            return <Popular key={item.id} recipe={item} />;
+            return <Popular key={item.id} recipe={item} time={true} />;
           })
         )}
       </section>

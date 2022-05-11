@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export default function useFetch(url) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    async function fetchData() {
+    const fetchData = useCallback(async () => {
         setError('')
         setLoading(true)
         const response = await fetch(url)
@@ -15,7 +15,7 @@ export default function useFetch(url) {
         const data = await response.json()
         setLoading(false)
         return data
-    }
+    }, [url])
 
     return [fetchData, loading, error]
 }

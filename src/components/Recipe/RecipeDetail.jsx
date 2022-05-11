@@ -15,7 +15,7 @@ export default function RecipeDetail({ id }) {
       const data = await getInfo();
       setDetail(data);
     })();
-  }, []);
+  }, [getInfo]);
   let content;
   if (loading) {
     content = <p className={styles.error}>Loading...</p>;

@@ -15,13 +15,13 @@ export default function Sarch() {
       const data = await getData();
       setResults(data.results);
     })();
-  }, []);
+  }, [getData]);
   return (
     <>
       <div className="wrapper">
       <Nav />
       <h3 className='heading title'>Search results for <span>"{query}"</span></h3>
-        {results.length === 0 && !loading ? <p>No results found</p> : <Results data={results} />}
+      <Results data={results} loading={loading} error={error} />
       </div>
     </>
   );

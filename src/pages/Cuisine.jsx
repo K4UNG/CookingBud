@@ -15,13 +15,13 @@ export default function Cuisine() {
       const data = await getData();
       setResults(data.results);
     })();
-  }, []);
+  }, [getData]);
   return (
     <>
       <div className="wrapper">
       <Nav />
       <h2 className='heading title'>{cuisine[0].toUpperCase() + cuisine.slice(1)} foods</h2>
-        <Results data={results} />
+        <Results loading={loading} error={error} data={results} />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import Nav from "../components/Nav/Nav";
 import styles from "./Ingredients.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import Ingredient from "../components/Ingredient/Ingredient";
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ export default function Ingredients() {
   const [search, setSearch] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
-  async function getIngredients() {
+  const getIngredients = useCallback(async () => {
     setLoading(true);
     const response = await fetch(
       `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${process.env.REACT_APP_API_KEY}&query=${search}&number=5&metaInformation=true`
@@ -65,7 +65,7 @@ export default function Ingredients() {
     const data = await response.json();
     setItems(data);
     setLoading(false);
-  }
+  }, [search]) 
 
   useEffect(() => {
     if (!search) return;
@@ -75,7 +75,7 @@ export default function Ingredients() {
     return () => {
       clearTimeout(timer);
     };
-  }, [search]);
+  }, [search, getIngredients]);
 
   function removeInge(id) {
     setIngredients((prev) => {
@@ -203,11 +203,11 @@ export default function Ingredients() {
           })}
         </select>
       </div>
-      <Link className={styles.search} to='/result' state={{
+      {ingredients.length > 0 &&<Link className={styles.search} to='/result' state={{
         cuisine,
         type,
         ingredients
-      }}>Search</Link>
+      }}>Search</Link>}
     </div>
   );
 }
