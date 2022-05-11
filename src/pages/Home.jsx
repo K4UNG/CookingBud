@@ -23,6 +23,9 @@ export default function Home() {
     } else {
       setPopular(JSON.parse(ls))
     }
+    if (popularError) {
+      localStorage.setItem('popular', '[]')
+    }
   }, [getPopular]);
 
   const [query, setQuery] = useState("");
