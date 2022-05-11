@@ -27,6 +27,7 @@
 
 body {
   background-image: linear-gradient(hsla(227, 100%, 90%, 0.3), hsla(227, 100%, 90%, 0.3)), url('./dot-grid.png');
+  overflow-x: hidden;
 }
 
 img {

@@ -3,7 +3,7 @@
     display: block;
     overflow: hidden;
     position: relative;
-    margin: 1.5rem 0;
+    margin: 1.5rem .5rem;
     height: 150px;
     background-color: white;
 }
