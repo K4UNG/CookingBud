@@ -2,6 +2,7 @@ import styles from "./RecipeDetail.module.css";
 import Nav from "../Nav/Nav";
 import useFetch from "../../hooks/use-fetch";
 import { useEffect, useState } from "react";
+import placeholder from './placeholder.png'
 
 export default function RecipeDetail({ id }) {
   const [detail, setDetail] = useState();
@@ -23,7 +24,7 @@ export default function RecipeDetail({ id }) {
     content = (
       <>
         <h1 className="heading">{detail?.title}</h1>
-        <div className={styles.img}><img src={detail?.image} alt={detail?.title} /></div>
+        <div className={styles.img}><img src={detail?.image ? detail.image : placeholder} alt={detail?.title} /></div>
 
         <strong>Ready in: {detail?.readyInMinutes}</strong>
         <strong>Servings: {detail?.servings}</strong>
