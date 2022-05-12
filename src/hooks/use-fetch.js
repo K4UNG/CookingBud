@@ -11,6 +11,7 @@ export default function useFetch(url) {
         if (!response.ok) {
             setError('something went wrong!')
             setLoading(false)
+            return
         }
         const data = await response.json()
         setLoading(false)
