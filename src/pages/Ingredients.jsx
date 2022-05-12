@@ -56,16 +56,23 @@ export default function Ingredients() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [ingredients, setIngredients] = useState([]);
+  const [error, setError] = useState("");
 
   const getIngredients = useCallback(async () => {
     setLoading(true);
+    setError("");
     const response = await fetch(
       `https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=${process.env.REACT_APP_API_KEY}&query=${search}&number=5&metaInformation=true`
     );
+    if (!response.ok) {
+      setLoading(false);
+      setError("Something went wrong");
+      return;
+    }
     const data = await response.json();
     setItems(data);
     setLoading(false);
-  }, [search]) 
+  }, [search]);
 
   useEffect(() => {
     if (!search) return;
@@ -122,6 +129,8 @@ export default function Ingredients() {
           >
             {loading ? (
               <p className={styles.state}>Loading...</p>
+            ) : error ? (
+              <p className={styles.state}>Something went wrong</p>
             ) : items.length === 0 && !loading ? (
               <p className={styles.state}>No results found</p>
             ) : (
@@ -156,7 +165,7 @@ export default function Ingredients() {
           ingredients.map((item) => {
             return (
               <Ingredient
-              key={item.id}
+                key={item.id}
                 item={item}
                 onClick={() => {
                   removeInge(item.id);
@@ -203,11 +212,19 @@ export default function Ingredients() {
           })}
         </select>
       </div>
-      {ingredients.length > 0 &&<Link className={styles.search} to='/result' state={{
-        cuisine,
-        type,
-        ingredients
-      }}>Search</Link>}
+      {ingredients.length > 0 && (
+        <Link
+          className={styles.search}
+          to="/result"
+          state={{
+            cuisine,
+            type,
+            ingredients,
+          }}
+        >
+          Search
+        </Link>
+      )}
     </div>
   );
 }
