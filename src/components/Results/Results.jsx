@@ -8,11 +8,11 @@ export default function Results({ data, loading, error }) {
     content = <p>No results found.</p>;
   } else {
     content = (
-      <>
+      <div className="results">
         {data.map((item) => {
           return <Popular key={item.id} recipe={item} />;
         })}
-      </>
+      </div>
     );
   }
   if (error) {

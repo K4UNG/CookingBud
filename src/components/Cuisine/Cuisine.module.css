@@ -9,3 +9,18 @@
     text-align: center;
     margin-bottom: 1rem;
 }
+
+@media (min-width: 700px) {
+    .cuisine {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .cuisine {
+        grid-template-columns: repeat(5, 100px);
+        justify-content: center;
+        grid-gap: 2rem;
+    }
+}

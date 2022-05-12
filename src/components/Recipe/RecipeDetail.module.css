@@ -6,6 +6,16 @@
     padding: 2rem 0;
 }
 
+.img {
+    background-color: white;
+    max-height: 450px;
+}
+
+.detail img {
+    max-height: 450px;
+    object-fit: contain;
+}
+
 .detail h1 {
     text-align: center;
     font-size: 1.5rem;
@@ -14,6 +24,16 @@
 
 .detail h2 {
     margin: 1.5rem 0 1rem;
+}
+
+.detail h2:first-of-type {
+    margin-top: .5rem;
+}
+
+.detail strong {
+    color: rgb(117, 117, 117);
+    margin-right: .5rem;
+    font-weight: 600;
 }
 
 .detail ul {

@@ -5,6 +5,7 @@ import Cuisine from './pages/Cuisine';
 import Search from './pages/Search';
 import Ingredients from './pages/Ingredients';
 import Result from './pages/Result'
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/ingredients' element={<Ingredients />} />
         <Route path='/result' element={<Result />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

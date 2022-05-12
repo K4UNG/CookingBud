@@ -4,6 +4,23 @@
 
 .nav__form {
     display: none;
+    position: relative;
+}
+
+.nav__form svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    color: gray;
+}
+
+.nav__form input {
+    padding: .5rem 2rem;
+    border: 0;
+    box-shadow: 0 3px #0003;
+    border-radius: 15px;
 }
 
 .nav {
@@ -17,11 +34,35 @@
 .nav__links {
     display: flex;
     align-items: center;
-    gap: 1rem;
     font-size: var(--small);
 }
 
 .links {
     text-decoration: none;
     color: black;
+    margin-left: 1rem;
+}
+
+@media (min-width: 700px) {
+    .nav__form {
+        display: inline-block;
+    }
+
+    .logo {
+        width: 130px;
+    }
+
+    .nav {
+        padding-top: 1rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .nav {
+        --small: 1rem;
+    }
+    
+    .links {
+        margin-left: 1.5rem;
+    }
 }

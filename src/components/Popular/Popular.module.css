@@ -41,3 +41,19 @@
     text-overflow: ellipsis;
     width: 80%;
 }
+
+.tags small {
+    display: flex;
+    align-items: center;
+}
+
+.tags svg {
+    width: 15px;
+    margin-right: 5px;
+}
+
+@media (min-width: 1000px) {
+    .card {
+        height: 200px;
+    }
+}

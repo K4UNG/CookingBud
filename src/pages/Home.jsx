@@ -1,45 +1,16 @@
 import Nav from "../components/Nav/Nav";
 import styles from "./Home.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import useFetch from "../hooks/use-fetch";
-import { useState, useEffect } from "react";
-import Popular from "../components/Popular/Popular";
+import { useState } from "react";
 import Cuisine from "../components/Cuisine/Cuisine";
-import Slider from "react-slick";
+import RecipeList from "../components/RecipeList/RecipeList";
+import useMedia from "../hooks/use-media";
 
 export default function Home() {
   const navigate = useNavigate();
 
-  const [popular, setPopular] = useState([]);
-  const [vegan, setVegan] = useState([]);
-  const [getPopular, popularLoading, popularError] = useFetch(
-    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=5`
-  );
-
-  const [getVegan, veganLoading, veganError] = useFetch(`https://api.spoonacular.com/recipes/random?number=5&tags=vegetarian&apiKey=${process.env.REACT_APP_API_KEY}`)
-  useEffect(() => {
-    const ls = localStorage.getItem("popular");
-    if (!ls || ls === "undefined") {
-      getPopular().then((data) => {
-        setPopular(data.recipes);
-        localStorage.setItem("popular", JSON.stringify(data.recipes));
-      });
-    } else {
-      setPopular(JSON.parse(ls));
-    }
-
-    const ve = localStorage.getItem("vegan");
-    if (!ve || ve === "undefined") {
-      getVegan().then((data) => {
-        setVegan(data.recipes);
-        localStorage.setItem("vegan", JSON.stringify(data.recipes));
-      });
-    } else {
-      setVegan(JSON.parse(ve));
-    }
-  }, [getVegan, getPopular]);
-
   const [query, setQuery] = useState("");
+  const state = useMedia(700, 1100)
 
   function submitHandler(e) {
     e.preventDefault();
@@ -87,7 +58,7 @@ export default function Home() {
               recipes are only a click away.
             </p>
             <Link to="/ingredients" className={styles.card__btn}>
-              Pick you ingredients
+              Pick your ingredients
             </Link>
           </div>
         </div>
@@ -95,46 +66,18 @@ export default function Home() {
       <section className={styles.body}>
         <Cuisine />
         <h2 className="heading">Popular picks for you</h2>
-        {popularLoading ? (
-          <p>Loading...</p>
-        ) : popularError ? (
-          <p>{popularError}</p>
-        ) : (
-          <Slider {...{
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000
-          }}>
-            {popular?.map((item) => {
-              return <Popular key={item.id} recipe={item} time={true} />;
-            })}
-          </Slider>
-        )}
+        <RecipeList 
+          state={state}
+          LSkey={'popular'}
+          url={`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=6`}
+        />
         
         <h2 className={`heading ${styles.vegan}`}>Vegan options</h2>
-        {veganLoading ? (
-          <p>Loading...</p>
-        ) : veganError ? (
-          <p>{veganError}</p>
-        ) : (
-          <Slider {...{
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 3000
-          }}>
-            {vegan?.map((item) => {
-              return <Popular key={item.id} recipe={item} time={true} />;
-            })}
-          </Slider>
-        )}
+        <RecipeList 
+          state={state}
+          LSkey={'vegan'}
+          url={`https://api.spoonacular.com/recipes/random?number=6&tags=vegetarian&apiKey=${process.env.REACT_APP_API_KEY}`}
+        />
       </section>
     </div>
   );

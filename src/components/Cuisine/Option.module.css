@@ -17,8 +17,25 @@
 .cuisine img {
     width: 25%;
     margin-right: 1rem;
+    max-width: 70px;
 }
 
 .cuisine strong {
     font-size: .9rem;
+}
+
+@media (min-width: 1000px) {
+    .cuisine {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cuisine img {
+        width: 70%;
+        margin: 0;
+    }
 }

@@ -23,7 +23,10 @@ export default function RecipeDetail({ id }) {
     content = (
       <>
         <h1 className="heading">{detail?.title}</h1>
-        <img src={detail?.image} alt={detail?.title} />
+        <div className={styles.img}><img src={detail?.image} alt={detail?.title} /></div>
+
+        <strong>Ready in: {detail?.readyInMinutes}</strong>
+        <strong>Servings: {detail?.servings}</strong>
         <h2 className="heading">Ingredients</h2>
         <ul>
           {detail?.extendedIngredients.map((item) => {
@@ -50,7 +53,7 @@ export default function RecipeDetail({ id }) {
   }
 
   return (
-    <div className={styles.recipe}>
+    <div className={`${styles.recipe} wrapper`}>
       <Nav />
       <div className={styles.detail}>{content}</div>
     </div>

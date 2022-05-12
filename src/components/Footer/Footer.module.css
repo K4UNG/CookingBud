@@ -1,0 +1,19 @@
+.footer {
+    text-align: center;
+    background-color: var(--text-gray);
+    padding: 2.5rem;
+    color: rgb(228, 228, 228);
+}
+
+.footer img {
+    width: 130px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+
+.footer p:first-of-type {
+    margin-top: .5rem;
+}
+
+.footer a {
+    color: rgb(228, 228, 228);
+}

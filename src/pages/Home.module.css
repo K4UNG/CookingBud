@@ -4,7 +4,8 @@
 
 .card {
     background-color: var(--light-blue);
-    margin: 2rem 0 3rem;
+    margin: 2rem auto 3rem;
+    max-width: 800px;
 }
 
 .card__text {
@@ -77,4 +78,25 @@
 
 .vegan {
     margin-top: 3rem;
+}
+
+@media (min-width: 700px) {
+    .form {
+        display: none;
+    }
+
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 4rem;
+    }
+
+    .card img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card__text {
+        padding: 1.5rem;
+    }
 }
