@@ -1,6 +1,6 @@
 # **<div align='center'>CookingBud</div>**
 **<div align='center'>A recipe app using React and spoonacular API</div>**
-**<a href='https://cookingbud.netlify.app' align='center' style='display: block' >Live site</a>**
+**<div align='center'><a href='https://cookingbud.netlify.app' align='center' style='display: block' >Live site</a></div>**
 
 ### **Built with**
 - React
